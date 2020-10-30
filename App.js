@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
 import {
   SafeAreaView,
@@ -14,6 +6,8 @@ import {
   View,
   Text,
   StatusBar,
+  Image,
+  Dimensions,
 } from 'react-native';
 
 import {
@@ -23,92 +17,91 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+// importing images and whatever
+import Navigation from './components/navigation.js';
+import MapView from 'react-native-maps';
 
-const App: () => React$Node = () => {
-  return (
+export default class App extends React.Component {
+  render() {
+    return (
     <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+    <Navigation />
+      <View style={styles.container}>
+          <MapView style={styles.mapStyle} />
+        </View>
     </>
   );
+ };
 };
 
 const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: Colors.lighter,
   },
-  engine: {
+  topNav: {
+    borderWidth: 1,
+  },
+  header: {
+    display: 'flex',
+    flexDirection: 'row',
+    padding: 15,
+    backgroundColor: 'white',
+  },
+  profile: {
+    width: "25%",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  icon: {
+    width: "50%",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  cart: {
+    width: '25%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  toggleContain: {
+    display: "flex",
+    flexDirection: 'row',
+    backgroundColor: "white",
+    padding: 15,
+    paddingBottom: 0,
+  },
+  optionContain: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    borderColor: 'red',
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  toggle: {
+    width: "30%",
+    textAlign: "center",
+    padding: 5,
+  },
+  map: {
     position: 'absolute',
+    top: 0,
+    left: 0,
     right: 0,
+    bottom: 0,
+    flex: 1,
   },
-  body: {
-    backgroundColor: Colors.white,
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: -1,
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  mapStyle: {
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
   },
 });
-
-export default App;
