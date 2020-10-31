@@ -65,6 +65,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.lighter,
   },
   topNav: {
+    zIndex: 5,
+    position: 'relative',
   },
   header: {
     display: 'flex',

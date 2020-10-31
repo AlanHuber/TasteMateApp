@@ -8,6 +8,7 @@ import {
   StatusBar,
   Image,
   Dimensions,
+  TextInput,
 } from 'react-native';
 
 import {
@@ -20,15 +21,30 @@ import {
 // importing images and whatever
 import Navigation from './components/navigation.js';
 import MapView from 'react-native-maps';
+import MapComponent from './components/map.js';
+import BottomBar from './components/BottomBar.js';
+import Filter from './images/filter.png';
+import Menu from './images/menu.png';
 
 export default class App extends React.Component {
   render() {
     return (
     <>
+    <View style={styles.topFill}>
+
+    </View>
     <Navigation />
       <View style={styles.container}>
-          <MapView style={styles.mapStyle} />
-        </View>
+        <MapComponent />
+      </View>
+    <View style={styles.formContain}>
+      <Image source={Filter} style={styles.navFilter}/>  
+      <TextInput>
+        Input your shit
+      </TextInput>
+      <Image source={Menu} style={styles.navOptions} />
+    </View>
+    <BottomBar />
     </>
   );
  };
@@ -99,9 +115,38 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     zIndex: -1,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
   mapStyle: {
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height,
+  },
+  formContain: {
+    borderWidth: 1,
+    margin: 15,
+    padding: 10,
+    backgroundColor: 'white',
+  },
+  form: {
+
+  },
+  formButton: {
+
+  },
+  topFill: {
+    position: 'absolute',
+    top: 0,
+    width: '100%',
+    height: 50,
+    zIndex: 1,
+    backgroundColor: 'white',
+  },
+  navFilter: {
+  },
+  navOptions: {
   },
 });

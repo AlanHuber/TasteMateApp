@@ -7,6 +7,7 @@ import {
   Text,
   StatusBar,
   Image,
+  Dimensions,
 } from 'react-native';
 
 import {
@@ -18,35 +19,36 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import MapView from 'react-native-maps';
 
-function getInitialState() {
-  return {
-    region: {
-      latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
-    },
-  };
-}
 
-function onRegionChange(region) {
+onRegionChange = (region) => {
   this.setState({ region });
 }
 
-const Map: () => React$Node = () => {
+export default class Map extends React.Component{
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      region: {
+        latitude: 40.78825,
+        longitude: -122.4324,
+        latitudeDelta: 1.0922,
+        longitudeDelta: 1.0421,
+      },
+    };
+  }
+
+  render(){
   return (
-    <>
-    <MapView
-          region={this.state.region}
-          onRegionChange={this.onRegionChange}
-        />
-    </>
-  );
+    <MapView style={styles.mapStyle} region={this.state.region}
+    />
+   );
+ };
 };
 
 const styles = StyleSheet.create({
-
+  mapStyle: {
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+  },
 });
-
-
-export default Map;
