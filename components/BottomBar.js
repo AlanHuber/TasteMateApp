@@ -8,7 +8,7 @@ import {
   StatusBar,
   Image,
   Dimensions,
-} from 'react-native';
+} from 'react-native'; 
 import ExploreIcon from '../images/pin.png';
 import RssIcon from '../images/rss.png';
 import StarIcon from '../images/star.png';
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     width: '100%',
     bottom: 0,
     height: 75,
-    borderWidth: 1,
+    // borderWidth: 1,
     display: 'flex',
     flexDirection: 'row',
     backgroundColor: 'white',

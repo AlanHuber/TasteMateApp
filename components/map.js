@@ -40,8 +40,7 @@ export default class Map extends React.Component{
 
   render(){
   return (
-    <MapView style={styles.mapStyle} region={this.state.region}
-    />
+    <MapView style={styles.mapStyle} region={this.state.region} />
    );
  };
 };

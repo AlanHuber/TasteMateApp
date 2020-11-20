@@ -23,6 +23,7 @@ import Navigation from './components/navigation.js';
 import MapView from 'react-native-maps';
 import MapComponent from './components/map.js';
 import BottomBar from './components/BottomBar.js';
+import CreateTripButton from './components/CreateTripButton.js';
 import Filter from './images/filter.png';
 import Menu from './images/menu.png';
 
@@ -31,19 +32,19 @@ export default class App extends React.Component {
     return (
     <>
     <View style={styles.topFill}>
-
     </View>
     <Navigation />
       <View style={styles.container}>
         <MapComponent />
       </View>
     <View style={styles.formContain}>
-      <Image source={Filter} style={styles.navFilter}/>  
-      <TextInput>
-        Input your shit
+      <Image source={Filter} style={styles.navFilter}/>
+      <TextInput style={styles.inputField}>
+        Search TasteMate
       </TextInput>
       <Image source={Menu} style={styles.navOptions} />
     </View>
+    <CreateTripButton />
     <BottomBar />
     </>
   );
@@ -125,12 +126,6 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height,
   },
-  formContain: {
-    borderWidth: 1,
-    margin: 15,
-    padding: 10,
-    backgroundColor: 'white',
-  },
   form: {
 
   },
@@ -145,8 +140,24 @@ const styles = StyleSheet.create({
     zIndex: 1,
     backgroundColor: 'white',
   },
+  formContain: {
+    borderWidth: 1,
+    margin: 15,
+    padding: 10,
+    backgroundColor: 'white',
+    display: 'flex',
+    flexDirection: 'row',
+  },
   navFilter: {
+    alignSelf: 'flex-end'
   },
   navOptions: {
+    marginLeft: 'auto',
+    alignSelf: 'flex-start'
   },
+  inputField: {
+    textAlign: 'center',
+    alignSelf: 'center',
+    flexGrow: 1,
+  }
 });
